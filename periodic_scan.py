@@ -1,7 +1,7 @@
 import docker
 import requests
 import json
-import urllib.parse
+import time
 
 API_ENDPOINT = "http://localhost:8000/scan"
 
@@ -27,6 +27,12 @@ def scan_all_images():
                 except Exception as e:
                     print(f"✗ Exception while logging: {tag}, Error: {str(e)}")
 
-if __name__ == "__main__":
+def main():
     clear_log_file()
     scan_all_images()
+
+if __name__ == "__main__":
+    while True:
+        main()
+        print("Sleeping for 60 seconds...")
+        time.sleep(60)
